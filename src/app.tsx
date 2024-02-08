@@ -20,10 +20,7 @@ export const App = () => {
       <div className="grid grid-cols-3 gap-6 auto-rows-[250px]">
         <NewNoteCard />
 
-        <NoteCard />
-        <NoteCard />
-        <NoteCard />
-        <NoteCard />
+        <NoteCard date={new Date()} content="asjkdjka" />
       </div>
     </div>
   )
