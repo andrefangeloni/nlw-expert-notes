@@ -36,6 +36,14 @@ export const App = () => {
     localStorage.setItem('nlw-expert@notes', JSON.stringify(data))
   }
 
+  const handleDeleteNote = (id: string) => {
+    const filteredNotes = notes.filter((note) => note.id !== id)
+
+    setNotes(filteredNotes)
+
+    localStorage.setItem('nlw-expert@notes', JSON.stringify(filteredNotes))
+  }
+
   const filteredNotes = search.length
     ? notes.filter((note) =>
         note.content.toLowerCase().includes(search.toLowerCase()),
@@ -61,7 +69,13 @@ export const App = () => {
         <NewNoteCard onNoteCreated={onNoteCreated} />
 
         {filteredNotes.map((note) => (
-          <NoteCard key={note.id} date={note.date} content={note.content} />
+          <NoteCard
+            key={note.id}
+            id={note.id}
+            date={note.date}
+            content={note.content}
+            onDelete={handleDeleteNote}
+          />
         ))}
       </div>
     </div>
